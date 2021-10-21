@@ -29,7 +29,27 @@ public:
 
     //// STUDENT CODE
     ////
+    //TODO Rule of Five
+    ChatBot(wxBitmap *image);
 
+    //copy constructor
+    ChatBot(const ChatBot &other);
+
+    // move constructor
+    ChatBot(ChatBot &&other);
+
+    // copy assignment
+    ChatBot& operator=(const ChatBot& other) 
+    {
+         return *this = ChatBot(other);
+    }
+ 
+    // move assignment
+    ChatBot& operator=(ChatBot&& other) noexcept 
+    {
+        std::swap(_image, other._image);
+        return *this;
+    }
     ////
     //// EOF STUDENT CODE
 

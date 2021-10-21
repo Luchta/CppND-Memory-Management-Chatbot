@@ -30,6 +30,19 @@ ChatBot::ChatBot(std::string filename)
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
+ChatBot::ChatBot(wxBitmap *image)
+{
+    std::cout << "ChatBot Constructor" << std::endl;
+    
+    // invalidate data handles
+    _chatLogic = nullptr;
+    _rootNode = nullptr;
+
+    // load image into heap memory
+    _image = new wxBitmap();
+    *_image = *image;
+}
+
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
@@ -44,6 +57,30 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
+
+ChatBot::ChatBot(const ChatBot &other) {
+    std::cout << "ChatBot Copy constructor" << std::endl;
+    
+    // invalidate data handles
+    _chatLogic = nullptr;
+    _rootNode = nullptr;
+
+    // copy image into heap memory
+    this->_image = new wxBitmap();
+    *this->_image = *other._image;
+}
+
+ChatBot::ChatBot(ChatBot &&other){
+    std::cout << "ChatBot Move constructor" << std::endl;
+
+    // invalidate data handles
+    _chatLogic = nullptr;
+    _rootNode = nullptr;
+
+    // move image from heap memory
+    this->_image = other._image;
+    other._image = nullptr;
+}
 
 ////
 //// EOF STUDENT CODE
