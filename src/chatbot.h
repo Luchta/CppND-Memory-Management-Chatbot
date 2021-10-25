@@ -29,7 +29,7 @@ public:
 
     //// STUDENT CODE
     ////
-    //TODO Rule of Five
+    //TODO 2 Rule of Five
     ChatBot(wxBitmap *image);
 
     //copy constructor

@@ -30,19 +30,6 @@ ChatBot::ChatBot(std::string filename)
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
-ChatBot::ChatBot(wxBitmap *image)
-{
-    std::cout << "ChatBot Constructor" << std::endl;
-    
-    // invalidate data handles
-    _chatLogic = nullptr;
-    _rootNode = nullptr;
-
-    // load image into heap memory
-    _image = new wxBitmap();
-    *_image = *image;
-}
-
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
@@ -57,6 +44,8 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
+
+//TODO 2 Rule of Five
 
 ChatBot::ChatBot(const ChatBot &other) {
     std::cout << "ChatBot Copy constructor" << std::endl;

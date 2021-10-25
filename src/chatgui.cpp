@@ -117,7 +117,7 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
 
     //// STUDENT CODE
     ////
-    //TODO unique chatLogic
+    //TODO 1 unique chatLogic
     // create chat logic instance
     _chatLogic = std::shared_ptr<ChatLogic>(new ChatLogic()); 
 

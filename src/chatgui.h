@@ -17,7 +17,7 @@ private:
     //// STUDENT CODE
     ////
 
-    //TODO unique chatLogic
+    //TODO 1 unique chatLogic
     std::shared_ptr<ChatLogic> _chatLogic;
 
     ////
@@ -29,7 +29,7 @@ public:
     ~ChatBotPanelDialog();
 
     // getter / setter
-    //TODO unique chatLogic
+    //TODO 1 unique chatLogic
     std::shared_ptr<ChatLogic> GetChatLogicHandle() const { return _chatLogic; }
 
     // events
