@@ -18,7 +18,7 @@ private:
     ////
 
     //TODO 1 unique chatLogic
-    std::shared_ptr<ChatLogic> _chatLogic;
+    std::unique_ptr<ChatLogic> _chatLogic;
 
     ////
     //// EOF STUDENT CODE
@@ -30,7 +30,7 @@ public:
 
     // getter / setter
     //TODO 1 unique chatLogic
-    std::shared_ptr<ChatLogic> GetChatLogicHandle() const { return _chatLogic; }
+    ChatLogic *GetChatLogicHandle() const { return _chatLogic.get(); }
 
     // events
     void paintEvent(wxPaintEvent &evt);
