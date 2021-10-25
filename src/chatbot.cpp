@@ -48,27 +48,61 @@ ChatBot::~ChatBot()
 //TODO 2 Rule of Five
 
 ChatBot::ChatBot(const ChatBot &other) {
-    std::cout << "ChatBot Copy constructor" << std::endl;
+    std::cout << "ChatBot Copy Constructor" << std::endl;
     
-    // invalidate data handles
-    _chatLogic = nullptr;
-    _rootNode = nullptr;
+    // copy data handles
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
 
     // copy image into heap memory
-    this->_image = new wxBitmap();
-    *this->_image = *other._image;
+    _image = new wxBitmap(*other._image);
 }
 
 ChatBot::ChatBot(ChatBot &&other){
-    std::cout << "ChatBot Move constructor" << std::endl;
+    std::cout << "ChatBot Move Constructor" << std::endl;
 
-    // invalidate data handles
-    _chatLogic = nullptr;
-    _rootNode = nullptr;
+    // move and invalidate data handles
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
 
     // move image from heap memory
     this->_image = other._image;
     other._image = nullptr;
+}
+
+ChatBot& ChatBot::operator=(const ChatBot& other) 
+{
+    std::cout << "ChatBot Copy Assignment Operator" << std::endl;
+    if(this == &other) {
+        return *this;
+    }
+
+    return *this = ChatBot(other);
+}
+
+ ChatBot& ChatBot::operator=(ChatBot &&other)
+{
+    std::cout << "ChatBot Move Assignment Operator" << std::endl;
+    if(this == &other) {
+        return *this;
+    }
+
+    // move and invalidate data handles
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
+
+    // update chatlogic
+    _chatLogic->SetChatbotHandle(this);
+
+    // move image from heap memory
+    this->_image = other._image;
+    other._image = nullptr;
+
+    return *this;
 }
 
 ////
